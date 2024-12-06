@@ -1,10 +1,10 @@
-import { useEffect, useState } from 'react';
-import { fetchCourseDetails, fetchCourseVariants } from './api/courseApi';
+import { useState, useEffect } from 'react';
+import useCourseData from './hooks/useCourseData';
+import useIntersectionObserver from './hooks/useIntersectionObserver';
 import Hero from './components/Hero';
 import Features from './components/Features';
 import Instructors from './components/Instructors';
 import FAQ from './components/FAQ';
-import { CheckList } from './components/CheckList';
 import Routine from './components/Routine';
 import FreeItems from './components/FreeItems';
 import Pointers from './components/Pointers';
@@ -14,59 +14,13 @@ import About from './components/About';
 import MediaGallery from './components/MediaGallery';
 import Navbar from './components/Navbar';
 import Variants from './components/Variants';
-import { motion } from 'framer-motion'; // Import motion from 'framer-motion'
+import { motion } from 'framer-motion';
 
 function App() {
-    const [courseData, setCourseData] = useState(null);
-    const [variantsData, setVariantsData] = useState(null);
-    const [loading, setLoading] = useState(true);
-    const [selectedBatchIndex, setSelectedBatchIndex] = useState(0);
-    const [instructorDivVisible, setInstructorDivVisible] = useState(false); // State to track instructor div visibility
-    const [showVariants, setShowVariants] = useState(false); // State to track variants visibility based on scroll
-    console.log(instructorDivVisible)
+    const { courseData, variantsData, loading, selectedBatchIndex, setSelectedBatchIndex } = useCourseData();
+    const [showVariants, setShowVariants] = useState(false);
 
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const [course, variants] = await Promise.all([
-                    fetchCourseDetails(),
-                    fetchCourseVariants()
-                ]);
-                setCourseData(course.data);
-                setVariantsData(variants.data);
-                setSelectedBatchIndex(0); // Initialize to first batch
-            } catch (error) {
-                console.error('Error fetching course data:', error);
-            } finally {
-                setLoading(false);
-            }
-        };
-
-        fetchData();
-    }, []);
-
-    useEffect(() => {
-        const observer = new IntersectionObserver((entries) => {
-            if (entries[0].isIntersecting) {
-                setInstructorDivVisible(true);
-                console.log('Instructor div is now visible');
-            } else {
-                setInstructorDivVisible(false);
-            }
-        });
-
-        const target = document.getElementById('instructorsDiv');
-        if (target) {
-            observer.observe(target);
-        }
-
-        return () => {
-            if (target) {
-                observer.unobserve(target);
-            }
-        };
-    }, []);
-
+    // Scroll handler for variants visibility
     useEffect(() => {
         const handleScroll = () => {
             if (window.scrollY >= 600) {
@@ -114,7 +68,7 @@ function App() {
                         <Hero
                             title={courseData.title}
                             description={courseData.description}
-                            targetDate={targetDate} // Pass targetDate to Hero
+                            targetDate={targetDate}
                         />
                     </div>
                     <div className="p-4 rounded-lg border max-w-[480px] md:absolute right-4 top-4 bg-gray-100">
@@ -122,8 +76,8 @@ function App() {
                         <Variants
                             variants={variantsData.items}
                             checklist={courseData.checklist}
-                            currentIndex={selectedBatchIndex} // Pass current index
-                            setCurrentIndex={setSelectedBatchIndex} // Pass updater
+                            currentIndex={selectedBatchIndex}
+                            setCurrentIndex={setSelectedBatchIndex}
                         />
                     </div>
                     <div className='flex'>
@@ -134,9 +88,9 @@ function App() {
                 </div>
                 <div className='relative px-4 mr-[480px]'>
                     {
-                        showVariants && window.innerWidth > 768  &&
+                        showVariants && window.innerWidth > 768 &&
                         <motion.div 
-                            className=" md:fixed md:right-4 md:p-4 md:bg-gray-100 md:rounded-t-lg md:top-20 max-w-[480px]"
+                            className="md:fixed md:right-4 md:p-4 md:bg-gray-100 md:rounded-t-lg md:top-20 max-w-[480px]"
                             initial={{ x: '100%' }}
                             animate={{ x: '0' }}
                             transition={{ duration: 0.5 }}
@@ -149,7 +103,7 @@ function App() {
                             />
                         </motion.div>
                     }
-                    <div id="instructorsDiv"> {/* Parent div with id */}
+                    <div id="instructorsDiv">
                         <Instructors instructors={instructors} />
                     </div>
                     <Features features={features} />
