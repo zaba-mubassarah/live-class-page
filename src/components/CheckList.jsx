@@ -2,7 +2,7 @@ import React from 'react';
 
 export function CheckList({ checklist }) {
   return (
-    <div className="bg-white rounded-lg shadow-lg p-6">
+    <div>
         <div className="space-y-4">
           <h3 className="font-semibold text-lg">What you'll get:</h3>
           {checklist.map((item, index) => (

@@ -42,7 +42,7 @@ function MediaGallery({ media }) {
   };
 
   return (
-    <div className="relative max-w-2xl mx-auto">
+    <div>
       {/* Main Display */}
       <div className="relative">
         {renderMedia(previewGallery[currentIndex])}

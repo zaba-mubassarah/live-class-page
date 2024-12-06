@@ -65,12 +65,11 @@ function App() {
                     title={courseData.title}
                     description={courseData.description}
                 />
-
-                <div className="py-8 bg-gray-50">
+                <div className="p-4 rounded-lg border w-[450px]">
                     <MediaGallery media={courseData.media} />
+                    <Variants variants={variantsData.items} />
+                    <CheckList checklist={courseData.checklist} />
                 </div>
-                <Variants variants={variantsData.items} />
-                <CheckList checklist={courseData.checklist} />
                 <DemoClass demoClass={demoClass} />
                 <Instructors instructors={instructors} />
                 <Features features={features} />
