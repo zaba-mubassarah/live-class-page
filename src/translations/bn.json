@@ -1,0 +1,26 @@
+{
+  "common": {
+    "enroll": "এখনই ভর্তি হোন",
+    "soldOut": "স্টক শেষ",
+    "days": "দিন",
+    "hours": "ঘণ্টা",
+    "minutes": "মিনিট",
+    "seconds": "সেকেন্ড",
+    "offerEndsIn": "অফার শেষ হতে বাকি:"
+  },
+  "hero": {
+    "enrollButton": "এখনই ভর্তি হোন"
+  },
+  "instructors": {
+    "title": "কোর্স প্রশিক্ষকগণ"
+  },
+  "features": {
+    "title": "কোর্সটি কিভাবে সাজানো হয়েছে"
+  },
+  "faq": {
+    "title": "সচরাচর জিজ্ঞাসা"
+  },
+  "pricing": {
+    "whatYouGet": "আপনি যা পাবেন:"
+  }
+} 

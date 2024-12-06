@@ -12,7 +12,9 @@ import Pointers from './components/Pointers';
 import DemoClass from './components/DemoClass';
 import Testimonials from './components/Testimonials';
 import About from './components/About';
+import LanguageSwitcher from './components/LanguageSwitcher';
 import MediaGallery from './components/MediaGallery';
+import Navbar from './components/Navbar';
 
 function App() {
     const [courseData, setCourseData] = useState(null);
@@ -58,35 +60,38 @@ function App() {
 
     return (
         <div>
-            <Hero
-                title={courseData.title}
-                description={courseData.description}
-            />
-            
-            <div className="py-8 bg-gray-50">
-                <MediaGallery media={courseData.media} />
-            </div>
-
-            <div className="container mx-auto px-4 py-16">
-                <h2 className="text-3xl font-bold text-center mb-12">Available Batches</h2>
-                <div className="grid md:grid-cols-2 gap-8">
-                    {variantsData.items.map(variant => (
-                        <>
-                            <PricingCard key={variant.id} variant={variant} />
-                            <CheckList checklist={courseData.checklist} />
-                        </>
-                    ))}
+            <Navbar />
+            <div className="pt-16">
+                <Hero
+                    title={courseData.title}
+                    description={courseData.description}
+                />
+                
+                <div className="py-8 bg-gray-50">
+                    <MediaGallery media={courseData.media} />
                 </div>
+
+                <div className="container mx-auto px-4 py-16">
+                    <h2 className="text-3xl font-bold text-center mb-12">Available Batches</h2>
+                    <div className="grid md:grid-cols-2 gap-8">
+                        {variantsData.items.map(variant => (
+                            <>
+                                <PricingCard key={variant.id} variant={variant} />
+                                <CheckList checklist={courseData.checklist} />
+                            </>
+                        ))}
+                    </div>
+                </div>
+                <DemoClass demoClass={demoClass} />
+                <Instructors instructors={instructors} />
+                <Features features={features} />
+                <Routine routine={routine} />
+                <About about={about} />
+                <Pointers pointers={pointers} />
+                <Testimonials testimonials={testimonials} />
+                <FAQ faqs={faqs} />
+                <FreeItems freeItems={freeItems} />
             </div>
-            <DemoClass demoClass={demoClass} />
-            <Instructors instructors={instructors} />
-            <Features features={features} />
-            <Routine routine={routine} />
-            <About about={about} />
-            <Pointers pointers={pointers} />
-            <Testimonials testimonials={testimonials} />
-            <FAQ faqs={faqs} />
-            <FreeItems freeItems={freeItems} />
         </div>
     );
 }
