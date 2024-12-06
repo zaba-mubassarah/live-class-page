@@ -103,7 +103,7 @@ function App() {
     const about = courseData.sections.find(s => s.type === 'about');
 
     // Get the selected variant's target date
-    const targetDate = variantsData.items[selectedBatchIndex]?.targetDate;
+    const targetDate = variantsData.items[selectedBatchIndex]?.plan.content_available_end_at;
 
     return (
         <div>
@@ -117,7 +117,7 @@ function App() {
                             targetDate={targetDate} // Pass targetDate to Hero
                         />
                     </div>
-                    <div className="p-4 rounded-lg border max-w-xl md:absolute right-4 top-4 bg-gray-100">
+                    <div className="p-4 rounded-lg border max-w-[480px] md:absolute right-4 top-4 bg-gray-100">
                         <MediaGallery media={courseData.media} />
                         <Variants
                             variants={variantsData.items}
@@ -136,7 +136,7 @@ function App() {
                     {
                         showVariants && window.innerWidth > 768  &&
                         <motion.div 
-                            className=" md:fixed md:right-4 md:p-4 md:bg-gray-100 md:rounded-t-lg md:top-20"
+                            className=" md:fixed md:right-4 md:p-4 md:bg-gray-100 md:rounded-t-lg md:top-20 max-w-[480px]"
                             initial={{ x: '100%' }}
                             animate={{ x: '0' }}
                             transition={{ duration: 0.5 }}

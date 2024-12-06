@@ -1,32 +1,60 @@
 import React from 'react';
-import useCountdown from '../hooks/useCountown';
+import useCountdown from '../hooks/useCountdown';
+import { motion } from 'framer-motion';
 
 export default function Countdown({ targetDate }) {
     const timeLeft = useCountdown(targetDate);
 
     if (!timeLeft) return null;
 
+    const variants = {
+        hidden: { scale: 0.95, opacity: 0 },
+        visible: { scale: 1, opacity: 1 },
+    };
+
     return (
-        <div className="rounded mb-4 text-sm">
-            <p className="text-gray-600 text-xs mb-1 text-center">Offer ends in:</p>
-            <div className="flex justify-center gap-2">
-                <div className="text-center border p-2 rounded">
-                    <div className="font-bold">{timeLeft.days}</div>
-                    <div className="text-[10px] text-gray-500">Days</div>
-                </div>
-                <div className="text-center border p-2 rounded">
-                    <div className="font-bold">{timeLeft.hours}</div>
-                    <div className="text-[10px] text-gray-500">Hours</div>
-                </div>
-                <div className="text-center border p-2 rounded">
-                    <div className="font-bold">{timeLeft.minutes}</div>
-                    <div className="text-[10px] text-gray-500">Minutes</div>
-                </div>
-                <div className="text-center border p-2 rounded">
-                    <div className="font-bold">{timeLeft.seconds}</div>
-                    <div className="text-[10px] text-gray-500">Seconds</div>
-                </div>
+        <motion.div
+            variants={variants}
+            initial="hidden"
+            animate="visible"
+            transition={{ duration: 0.5 }}
+            className="rounded mb-4 text-lg text-left"
+        >
+            <p className="text-gray-600 text-sm mb-2">Offer ends in:</p>
+            <div className="flex gap-4">
+                <motion.div
+                    variants={variants}
+                    className="text-left border p-4 rounded-lg"
+                    style={{ boxShadow: '0 0 6px #fff' }} // Updated glow effect
+                >
+                    <div className="font-bold text-2xl">{timeLeft.days}</div>
+                    <div className="text-sm text-gray-500">Days</div>
+                </motion.div>
+                <motion.div
+                    variants={variants}
+                    className="text-left border p-4 rounded-lg"
+                    style={{ boxShadow: '0 0 6px #fff' }} // Updated glow effect
+                >
+                    <div className="font-bold text-2xl">{timeLeft.hours}</div>
+                    <div className="text-sm text-gray-500">Hours</div>
+                </motion.div>
+                <motion.div
+                    variants={variants}
+                    className="text-left border p-4 rounded-lg"
+                    style={{ boxShadow: '0 0 6px #fff' }} // Updated glow effect
+                >
+                    <div className="font-bold text-2xl">{timeLeft.minutes}</div>
+                    <div className="text-sm text-gray-500">Minutes</div>
+                </motion.div>
+                <motion.div
+                    variants={variants}
+                    className="text-left border p-4 rounded-lg"
+                    style={{ boxShadow: '0 0 6px #fff' }} // Updated glow effect
+                >
+                    <div className="font-bold text-2xl">{timeLeft.seconds}</div>
+                    <div className="text-sm text-gray-500">Seconds</div>
+                </motion.div>
             </div>
-        </div>
+        </motion.div>
     );
 }

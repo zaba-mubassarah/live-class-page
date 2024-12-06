@@ -2,7 +2,7 @@ function Routine({ routine }) {
     if (!routine?.values?.[0]?.html) return null;
 
     return (
-        <div className="container mx-auto px-4 py-16">
+        <div className=" px-4 py-16">
             <div className="flex justify-between items-center mb-8">
                 <h2 className="text-3xl font-bold mb-12">
                     {routine.name}
@@ -20,7 +20,7 @@ function Routine({ routine }) {
                 )}
             </div>
             <div
-                className="w-full"
+                className="w-full mx-auto"
                 dangerouslySetInnerHTML={{ __html: routine.values[0].html }}
             />
         </div>

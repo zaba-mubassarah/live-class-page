@@ -4,7 +4,7 @@ import Countdown from './Countdown';
 export default function Hero({ title, description, targetDate }) {
 
   return (
-    <div className="relative text-white flex">
+    <div className="relative text-white flex pl-4">
       <div className="px-4 py-16 lg:py-24">
         <div className="max-w-2xl mx-auto min-h-90">
           <motion.h1
