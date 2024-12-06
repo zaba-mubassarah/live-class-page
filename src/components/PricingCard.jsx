@@ -1,6 +1,6 @@
 export default function PricingCard({ variant }) {
   return (
-    <div className="bg-white rounded-lg shadow p-4 flex flex-col justify-center">
+    <div className="bg-white border rounded-lg p-4 flex flex-col justify-center">
       <div className="flex items-baseline mb-3">
         <span className="text-2xl text-left font-bold">৳{variant.final_price}</span>
         {variant.discount_value > 0 && (

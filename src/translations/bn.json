@@ -22,5 +22,13 @@
   },
   "pricing": {
     "whatYouGet": "আপনি যা পাবেন:"
+  },
+  "variants": {
+    "enroll_now": "এখনই ভর্তি হোন",
+    "sold_out": "স্টক শেষ",
+    "previous_batch": "পূর্ববর্তী ব্যাচ",
+    "next_batch": "পরবর্তী ব্যাচ",
+    "no_more_batches": "আর কোনো ব্যাচ নেই",
+    "prev_batch": "পূর্ববর্তী ব্যাচ"
   }
 } 

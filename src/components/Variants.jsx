@@ -1,8 +1,11 @@
 import React from 'react';
 import PricingCard from './PricingCard';
 import { CheckList } from './CheckList';
+import { useTranslation } from 'react-i18next';
 
 export default function Variants({ variants, checklist, currentIndex, setCurrentIndex }) {
+    const { t } = useTranslation();
+
     // Navigate to the next variant
     const handleNext = () => {
         setCurrentIndex(prev =>
@@ -37,7 +40,7 @@ export default function Variants({ variants, checklist, currentIndex, setCurrent
                                     } py-2 rounded font-medium text-sm`}
                                 disabled={variant.available_stock === 0}
                             >
-                                {variant.available_stock > 0 ? 'Enroll Now' : 'Sold Out'}
+                                {variant.available_stock > 0 ? t('variants.enroll_now') : t('variants.sold_out')}
                             </button>
 
                             {/* Secondary Button: Next Batch or Prev Batch */}
@@ -55,16 +58,16 @@ export default function Variants({ variants, checklist, currentIndex, setCurrent
                                     }`}
                                 aria-label={
                                     currentIndex === variants.length - 1
-                                        ? 'Previous Batch'
-                                        : 'Next Batch'
+                                        ? t('variants.previous_batch')
+                                        : t('variants.next_batch')
                                 }
                                 disabled={variants.length <= 1}
                             >
                                 {variants.length <= 1
-                                    ? 'No More Batches'
+                                    ? t('variants.no_more_batches')
                                     : currentIndex === variants.length - 1
-                                        ? 'Prev Batch'
-                                        : 'Next Batch'}
+                                        ? t('variants.prev_batch')
+                                        : t('variants.next_batch')}
                             </button>
                         </div>
                     </div>

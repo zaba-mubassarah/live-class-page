@@ -22,5 +22,13 @@
   },
   "pricing": {
     "whatYouGet": "What you'll get:"
+  },
+  "variants": {
+    "enroll_now": "Enroll Now",
+    "sold_out": "Sold Out",
+    "previous_batch": "Previous Batch",
+    "next_batch": "Next Batch",
+    "no_more_batches": "No More Batches",
+    "prev_batch": "Previous Batch"
   }
 } 
