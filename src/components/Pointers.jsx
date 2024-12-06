@@ -19,7 +19,7 @@ function Pointers({ pointers }) {
               <div 
                 className={`text-lg ${pointer.color ? `text-[${pointer.color}]` : 'text-gray-700'}`}
               >
-                {pointer.text.substring(0, 100)}... <a href="#" className="text-blue-500 hover:text-blue-700">Read More</a>
+                {pointer.text}
               </div>
             </div>
           ))}

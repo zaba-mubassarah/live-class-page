@@ -132,7 +132,7 @@ function App() {
                         </div>
                     </div>
                 </div>
-                <div className='max-w-3xl relative pr-4'>
+                <div className='relative px-4 mr-[480px]'>
                     {
                         showVariants && window.innerWidth > 768  &&
                         <motion.div 

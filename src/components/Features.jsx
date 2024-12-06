@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import AnimatedSection from './AnimatedSection';
+import { motion } from 'framer-motion';
 
 export default function Features({ features }) {
   const { t } = useTranslation();
@@ -7,16 +7,23 @@ export default function Features({ features }) {
   return (
     <section className="py-16 md:py-24">
       <div className="container px-4">
-        <AnimatedSection>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
           <h2 className="text-3xl font-bold mb-12">
             {t('features.title')}
           </h2>
-        </AnimatedSection>
+        </motion.div>
 
-        <div className="grid grid-cols-2 gap-6">
+        <div className="flex flex-col gap-6 md:grid md:grid-cols-2">
           {features.map((feature, index) => (
-            <AnimatedSection
+            <motion.div
               key={feature.id}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: index * 0.2 }}
               className="h-full border p-6 rounded-xl shadow-lg transform hover:-translate-y-1 transition-transform duration-300"
             >
               <div className="flex items-start gap-4">
@@ -30,7 +37,7 @@ export default function Features({ features }) {
                   <p className="text-gray-600">{feature.subtitle}</p>
                 </div>
               </div>
-            </AnimatedSection>
+            </motion.div>
           ))}
         </div>
       </div>
