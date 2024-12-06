@@ -85,7 +85,7 @@ function App() {
                         </div>
                     </div>
                 </div>
-                <div className='relative px-4 mr-[480px]'>
+                <div className='relative px-4 md:mr-[480px]'>
                     {
                         showVariants && window.innerWidth > 768 &&
                         <motion.div 
