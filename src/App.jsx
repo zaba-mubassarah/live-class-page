@@ -67,11 +67,10 @@ function App() {
                             title={courseData.title}
                             description={courseData.description}
                         />
-                        <CheckList checklist={courseData.checklist} />
                     </div>
                     <div className="p-4 rounded-lg border w-[450px] absolute right-4 top-4 bg-gray-100">
                         <MediaGallery media={courseData.media} />
-                        <Variants variants={variantsData.items} />
+                        <Variants variants={variantsData.items} checklist={courseData.checklist} />
                     </div>
                     <div className='flex'>
 
@@ -84,6 +83,7 @@ function App() {
                     <Instructors instructors={instructors} />
                     <Features features={features} />
                     <Routine routine={routine} />
+                    <CheckList checklist={courseData.checklist} />
                     <About about={about} />
                     <Pointers pointers={pointers} />
                     <Testimonials testimonials={testimonials} />

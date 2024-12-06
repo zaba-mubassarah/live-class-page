@@ -8,13 +8,13 @@ function About({ about }) {
 
   return (
     <div className="container mx-auto px-4 py-16">
-      <h2 className="text-3xl font-bold text-center mb-12">
+      <h2 className="text-2xl font-bold text-center mb-12">
         {about.name}
       </h2>
 
       <div className="max-w-4xl mx-auto space-y-4">
         {about.values.map((section, index) => (
-          <div key={section.id} className="bg-white rounded-lg shadow-md">
+          <div key={section.id} className="bg-white rounded-lg border">
             <button
               className="w-full px-6 py-4 text-left flex justify-between items-center"
               onClick={() => setOpenIndex(openIndex === index ? null : index)}
@@ -30,7 +30,7 @@ function About({ about }) {
                 )}
                 {section.title && (
                   <div 
-                    className="font-semibold"
+                    className="font-semibold text-sm"
                     dangerouslySetInnerHTML={{ __html: section.title }}
                   />
                 )}
@@ -42,10 +42,10 @@ function About({ about }) {
               />
             </button>
             {openIndex === index && (
-              <div className="px-6 pb-4">
+              <div className="px-6 pb-4 border border-gray-300">
                 {section.description && (
                   <div 
-                    className="prose prose-lg max-w-none"
+                    className="prose prose-sm max-w-none"
                     dangerouslySetInnerHTML={{ __html: section.description }}
                   />
                 )}

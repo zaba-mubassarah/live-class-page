@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import PricingCard from './PricingCard';
+import { CheckList } from './CheckList';
 
-export default function Variants({ variants }) {
+export default function Variants({ variants, checklist }) {
     const [currentIndex, setCurrentIndex] = useState(0);
 
     const handlePrevious = () => {
@@ -21,6 +22,7 @@ export default function Variants({ variants }) {
 
     return (
         <>
+            <CheckList checklist={checklist} />
             <div className="relative">
                 <div className="flex">
                     {variants.map((variant, index) => (
@@ -29,6 +31,12 @@ export default function Variants({ variants }) {
                             className={`w-full px-4 ${index === currentIndex ? 'block' : 'hidden'}`}
                         >
                             <PricingCard variant={variant} />
+                            <button
+                                className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded font-medium text-sm mt-4"
+                                disabled={variant.available_stock === 0}
+                            >
+                                {variant.available_stock > 0 ? 'Enroll Now' : 'Sold Out'}
+                            </button>
                         </div>
                     ))}
                 </div>
