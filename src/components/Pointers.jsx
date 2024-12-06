@@ -4,7 +4,7 @@ function Pointers({ pointers }) {
   return (
     <div className="bg-gray-50 py-16">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-bold text-center mb-12">{pointers.name}</h2>
+        <h2 className="text-3xl font-bold text-left mb-12">{pointers.name}</h2>
         <div className="grid md:grid-cols-2 gap-8">
           {pointers.values.map((pointer) => (
             <div 
@@ -19,7 +19,7 @@ function Pointers({ pointers }) {
               <div 
                 className={`text-lg ${pointer.color ? `text-[${pointer.color}]` : 'text-gray-700'}`}
               >
-                {pointer.text}
+                {pointer.text.substring(0, 100)}... <a href="#" className="text-blue-500 hover:text-blue-700">Read More</a>
               </div>
             </div>
           ))}
