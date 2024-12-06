@@ -3,12 +3,8 @@ function Routine({ routine }) {
 
   return (
     <div className="container mx-auto px-4 py-16">
-      <h2 className="text-3xl font-bold text-center mb-8">{routine.name}</h2>
-      <div className="flex flex-col items-center gap-4">
-        <div 
-          className="w-full max-w-4xl" 
-          dangerouslySetInnerHTML={{ __html: routine.values[0].html }}
-        />
+      <div className="flex justify-between items-center mb-8">
+        <h2 className="text-3xl font-bold">{routine.name}</h2>
         {routine.values[0].download_link && (
           <a 
             href={routine.values[0].download_link}
@@ -20,8 +16,12 @@ function Routine({ routine }) {
           </a>
         )}
       </div>
+      <div 
+        className="w-full" 
+        dangerouslySetInnerHTML={{ __html: routine.values[0].html }}
+      />
     </div>
   );
 }
 
-export default Routine; 
+export default Routine;
