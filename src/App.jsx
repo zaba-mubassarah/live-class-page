@@ -11,6 +11,7 @@ import FreeItems from './components/FreeItems';
 import Pointers from './components/Pointers';
 import DemoClass from './components/DemoClass';
 import Testimonials from './components/Testimonials';
+import About from './components/About';
 
 function App() {
     const [courseData, setCourseData] = useState(null);
@@ -52,6 +53,7 @@ function App() {
     const pointers = courseData.sections.find(s => s.type === 'pointers');
     const demoClass = courseData.sections.find(s => s.type === 'demo_class_book_engagement');
     const testimonials = courseData.sections.find(s => s.type === 'testimonials');
+    const about = courseData.sections.find(s => s.type === 'about');
 
     return (
         <div>
@@ -80,6 +82,7 @@ function App() {
             <FAQ faqs={faqs} />
             <Routine routine={routine} />
             <FreeItems freeItems={freeItems} />
+            <About about={about} />
         </div>
     );
 }

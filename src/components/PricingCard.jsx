@@ -1,4 +1,36 @@
+import useCountdown from '../hooks/useCountdown';
+
 export default function PricingCard({ variant }) {
+  const timeLeft = useCountdown(variant.sale_end_time);
+
+  const renderCountdown = () => {
+    if (!variant.sale_end_time) return null;
+
+    return (
+      <div className="bg-gray-50 rounded-lg p-4 mb-6">
+        <p className="text-sm text-gray-600 mb-2">Offer ends in:</p>
+        <div className="flex justify-center gap-4">
+          <div className="text-center">
+            <div className="text-xl font-bold">{timeLeft.days}</div>
+            <div className="text-xs text-gray-500">Days</div>
+          </div>
+          <div className="text-center">
+            <div className="text-xl font-bold">{timeLeft.hours}</div>
+            <div className="text-xs text-gray-500">Hours</div>
+          </div>
+          <div className="text-center">
+            <div className="text-xl font-bold">{timeLeft.minutes}</div>
+            <div className="text-xs text-gray-500">Minutes</div>
+          </div>
+          <div className="text-center">
+            <div className="text-xl font-bold">{timeLeft.seconds}</div>
+            <div className="text-xs text-gray-500">Seconds</div>
+          </div>
+        </div>
+      </div>
+    );
+  };
+
   return (
     <div className="bg-white rounded-lg shadow-lg p-6">
       <h3 className="text-xl font-semibold mb-4">{variant.name}</h3>
@@ -8,6 +40,8 @@ export default function PricingCard({ variant }) {
           <span className="ml-2 text-gray-500 line-through">৳{variant.price}</span>
         )}
       </div>
+
+      {renderCountdown()}
 
       <div className="space-y-4 mb-6">
         {variant.meta.find(m => m.key === 'checklist')?.values.map((item, index) => (
