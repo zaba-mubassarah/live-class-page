@@ -6,7 +6,7 @@ export default function Instructors({ instructors }) {
   return (
     <section className="py-16">
       <div className="px-4">
-        <h2 className="text-3xl font-bold mb-12">{t('instructors.title')}</h2>
+        <h2 className="text-2xl font-bold mb-12">{t('instructors.title')}</h2>
         <div className="grid md:grid-cols-2 gap-8">
           {instructors.map(instructor => (
             <div key={instructor.slug} className="flex items-center gap-8 border border-gray-200 p-4 rounded-lg">

@@ -110,7 +110,7 @@ function App() {
             <Navbar />
             <div className="pt-16">
                 <div className='relative'>
-                    <div className='relative bg-gradient-to-br from-gray-900 to-gray-800'>
+                    <div className='relative bg-gradient-to-br from-gray-900 to-gray-600'>
                         <Hero
                             title={courseData.title}
                             description={courseData.description}

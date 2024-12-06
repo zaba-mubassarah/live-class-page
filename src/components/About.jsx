@@ -8,7 +8,7 @@ function About({ about }) {
 
   return (
     <div className="container mx-auto px-4 py-16">
-      <h2 className="text-3xl font-bold mb-12">
+      <h2 className="text-2xl font-bold mb-12">
         {about.name}
       </h2>
 

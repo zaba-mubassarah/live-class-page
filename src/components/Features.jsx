@@ -12,19 +12,19 @@ export default function Features({ features }) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-3xl font-bold mb-12">
+          <h2 className="text-2xl font-bold mb-12">
             {t('features.title')}
           </h2>
         </motion.div>
 
-        <div className="flex flex-col gap-6 md:grid md:grid-cols-2">
+        <div className="flex flex-col gap-6 md:grid md:grid-cols-2 bg-gray-900 rounded-lg p-4 text-white">
           {features.map((feature, index) => (
             <motion.div
               key={feature.id}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.2 }}
-              className="h-full border p-6 rounded-xl shadow-lg transform hover:-translate-y-1 transition-transform duration-300"
+              className="h-full  p-6 rounded-xl shadow transform hover:-translate-y-1 transition-transform duration-300"
             >
               <div className="flex items-start gap-4">
                 <img
@@ -34,7 +34,7 @@ export default function Features({ features }) {
                 />
                 <div>
                   <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
-                  <p className="text-gray-600">{feature.subtitle}</p>
+                  <p>{feature.subtitle}</p>
                 </div>
               </div>
             </motion.div>

@@ -4,7 +4,7 @@ function Routine({ routine }) {
     return (
         <div className=" px-4 py-16">
             <div className="flex justify-between items-center mb-8">
-                <h2 className="text-3xl font-bold mb-12">
+                <h2 className="text-2xl font-bold mb-12">
                     {routine.name}
                 </h2>
 
