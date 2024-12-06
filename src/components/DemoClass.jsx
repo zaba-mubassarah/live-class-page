@@ -26,13 +26,13 @@ function DemoClass({ demoClass }) {
           {/* Content */}
           <div className="max-w-2xl">
             <h2 
-              className="text-2xl md:text-3xl font-bold mb-4"
+              className="text-xl md:text-2xl font-bold mb-4"
               style={{ color: data.title_color }}
             >
               {data.title}
             </h2>
             <p 
-              className="text-lg mb-8"
+              className="text-md mb-8"
               style={{ color: data.description_color }}
             >
               {data.description}

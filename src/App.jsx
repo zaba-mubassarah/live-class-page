@@ -61,24 +61,35 @@ function App() {
         <div>
             <Navbar />
             <div className="pt-16">
-                <Hero
-                    title={courseData.title}
-                    description={courseData.description}
-                />
-                <div className="p-4 rounded-lg border w-[450px]">
-                    <MediaGallery media={courseData.media} />
-                    <Variants variants={variantsData.items} />
-                    <CheckList checklist={courseData.checklist} />
+                <div className='relative'>
+                    <div className='relative bg-gradient-to-br from-gray-900 to-gray-800'>
+                        <Hero
+                            title={courseData.title}
+                            description={courseData.description}
+                        />
+                        <CheckList checklist={courseData.checklist} />
+                    </div>
+                    <div className="p-4 rounded-lg border w-[450px] absolute right-4 top-4 bg-gray-100">
+                        <MediaGallery media={courseData.media} />
+                        <Variants variants={variantsData.items} />
+                    </div>
+                    <div className='flex'>
+
+                        <div className='max-w-xl'>
+                            <DemoClass demoClass={demoClass} />
+                        </div>
+                    </div>
                 </div>
-                <DemoClass demoClass={demoClass} />
-                <Instructors instructors={instructors} />
-                <Features features={features} />
-                <Routine routine={routine} />
-                <About about={about} />
-                <Pointers pointers={pointers} />
-                <Testimonials testimonials={testimonials} />
-                <FAQ faqs={faqs} />
-                <FreeItems freeItems={freeItems} />
+                <div className='max-w-3xl'>
+                    <Instructors instructors={instructors} />
+                    <Features features={features} />
+                    <Routine routine={routine} />
+                    <About about={about} />
+                    <Pointers pointers={pointers} />
+                    <Testimonials testimonials={testimonials} />
+                    <FAQ faqs={faqs} />
+                    <FreeItems freeItems={freeItems} />
+                </div>
             </div>
         </div>
     );
