@@ -19,6 +19,7 @@ function App() {
     const [courseData, setCourseData] = useState(null);
     const [variantsData, setVariantsData] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [selectedBatchIndex, setSelectedBatchIndex] = useState(0);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -29,6 +30,7 @@ function App() {
                 ]);
                 setCourseData(course.data);
                 setVariantsData(variants.data);
+                setSelectedBatchIndex(0); // Initialize to first batch
             } catch (error) {
                 console.error('Error fetching course data:', error);
             } finally {
@@ -47,6 +49,7 @@ function App() {
         );
     }
 
+    // Extract sections from courseData
     const features = courseData.sections.find(s => s.type === 'features')?.values || [];
     const instructors = courseData.sections.find(s => s.type === 'instructors')?.values || [];
     const faqs = courseData.sections.find(s => s.type === 'faq')?.values || [];
@@ -57,6 +60,9 @@ function App() {
     const testimonials = courseData.sections.find(s => s.type === 'testimonials');
     const about = courseData.sections.find(s => s.type === 'about');
 
+    // Get the selected variant's target date
+    const targetDate = variantsData.items[selectedBatchIndex]?.targetDate;
+
     return (
         <div>
             <Navbar />
@@ -66,15 +72,20 @@ function App() {
                         <Hero
                             title={courseData.title}
                             description={courseData.description}
+                            targetDate={targetDate} // Pass targetDate to Hero
                         />
                     </div>
-                    <div className="p-4 rounded-lg border w-[450px] absolute right-4 top-4 bg-gray-100">
+                    <div className="p-4 rounded-lg border max-w-xl absolute right-4 top-4 bg-gray-100">
                         <MediaGallery media={courseData.media} />
-                        <Variants variants={variantsData.items} checklist={courseData.checklist} />
+                        <Variants 
+                            variants={variantsData.items} 
+                            checklist={courseData.checklist}
+                            currentIndex={selectedBatchIndex} // Pass current index
+                            setCurrentIndex={setSelectedBatchIndex} // Pass updater
+                        />
                     </div>
                     <div className='flex'>
-
-                        <div className='max-w-xl'>
+                        <div className='max-w-3xl'>
                             <DemoClass demoClass={demoClass} />
                         </div>
                     </div>
@@ -83,7 +94,6 @@ function App() {
                     <Instructors instructors={instructors} />
                     <Features features={features} />
                     <Routine routine={routine} />
-                    <CheckList checklist={courseData.checklist} />
                     <About about={about} />
                     <Pointers pointers={pointers} />
                     <Testimonials testimonials={testimonials} />

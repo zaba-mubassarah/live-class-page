@@ -43,7 +43,7 @@ function MediaGallery({ media }) {
   };
 
   return (
-    <div className='m-4 mb-10' onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
+    <div onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
       {/* Main Display */}
       <div className="relative">
         {renderMedia(previewGallery[currentIndex])}

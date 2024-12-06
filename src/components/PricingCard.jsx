@@ -1,37 +1,4 @@
-import useCountdown from '../hooks/useCountDown';
-
 export default function PricingCard({ variant }) {
-  const defaultDate = new Date();
-  const timeLeft = useCountdown(variant.sale_end_time || defaultDate);
-
-  const renderCountdown = () => {
-    if (!variant.sale_end_time && !defaultDate) return null;
-
-    return (
-      <div className="bg-gray-50 rounded p-2 mb-4 text-sm">
-        <p className="text-gray-600 text-xs mb-1 text-center">Offer ends in:</p>
-        <div className="flex justify-center gap-2">
-          <div className="text-center border p-2 rounded">
-            <div className="font-bold">{timeLeft.days}</div>
-            <div className="text-[10px] text-gray-500">Days</div>
-          </div>
-          <div className="text-center border p-2 rounded">
-            <div className="font-bold">{timeLeft.hours}</div>
-            <div className="text-[10px] text-gray-500">Hours</div>
-          </div>
-          <div className="text-center border p-2 rounded">
-            <div className="font-bold">{timeLeft.minutes}</div>
-            <div className="text-[10px] text-gray-500">Minutes</div>
-          </div>
-          <div className="text-center border p-2 rounded">
-            <div className="font-bold">{timeLeft.seconds}</div>
-            <div className="text-[10px] text-gray-500">Seconds</div>
-          </div>
-        </div>
-      </div>
-    );
-  };
-
   return (
     <div className="bg-white rounded-lg shadow p-4 flex flex-col justify-center">
       <div className="flex items-baseline mb-3">
@@ -41,8 +8,6 @@ export default function PricingCard({ variant }) {
         )}
       </div>
       <h3 className="text-sm mb-2">{variant.name}</h3>
-
-      {renderCountdown()}
     </div>
   );
 }

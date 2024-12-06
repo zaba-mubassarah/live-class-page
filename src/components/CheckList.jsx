@@ -2,11 +2,11 @@ import React from 'react';
 
 export function CheckList({ checklist }) {
   return (
-    <div className="p-4 border rounded">
+    <div className="p-4 border rounded-lg mt-4 bg-white">
         <div className="space-y-4">
           <h3 className="font-semibold text-lg">What you'll get:</h3>
           {checklist.map((item, index) => (
-            <div key={item.id} className="flex items-start gap-3">
+            <div key={item.id} className="flex items-start gap-3 bg-white">
               <img 
                 src={item.icon}
                 alt=""

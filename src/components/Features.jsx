@@ -5,14 +5,14 @@ export default function Features({ features }) {
   const { t } = useTranslation();
 
   return (
-    <section className="py-16 md:py-24 bg-gray-50">
-      <div className="container mx-auto px-4">
+    <section className="py-16 md:py-24">
+      <div className="container px-4">
         <AnimatedSection>
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
+          <h2 className="text-3xl font-bold mb-12">
             {t('features.title')}
           </h2>
         </AnimatedSection>
-        
+
         <div className="grid grid-cols-2 gap-6">
           {features.map((feature, index) => (
             <AnimatedSection
@@ -20,9 +20,9 @@ export default function Features({ features }) {
               className="h-full border p-6 rounded-xl shadow-lg transform hover:-translate-y-1 transition-transform duration-300"
             >
               <div className="flex items-start gap-4">
-                <img 
-                  src={feature.icon} 
-                  alt="" 
+                <img
+                  src={feature.icon}
+                  alt=""
                   className="w-10 h-10 flex-shrink-0"
                 />
                 <div>
