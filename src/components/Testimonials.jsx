@@ -31,7 +31,7 @@ function Testimonials({ testimonials }) {
               className="bg-white rounded-xl shadow-sm overflow-hidden"
             >
               {/* Video */}
-              {/* {renderVideo(testimonial.video_url)} */}
+              {renderVideo(testimonial.video_url)}
               
               {/* Profile */}
               <div className="p-6">
@@ -50,12 +50,6 @@ function Testimonials({ testimonials }) {
                     </p>
                   </div>
                 </div>
-                
-                {testimonial.testimonial && (
-                  <p className="text-gray-700">
-                    {testimonial.testimonial}
-                  </p>
-                )}
               </div>
             </div>
           ))}
