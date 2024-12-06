@@ -1,17 +1,9 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import PricingCard from './PricingCard';
 
 export default function Variants({ variants }) {
   const [currentIndex, setCurrentIndex] = useState(0);
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      handleNext();
-    }, 5000);
-
-    return () => clearInterval(timer);
-  }, [currentIndex]);
 
   const handlePrevious = () => {
     setCurrentIndex((prev) => 
@@ -92,4 +84,4 @@ export default function Variants({ variants }) {
       </div>
     </div>
   );
-} 
+}

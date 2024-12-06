@@ -1,4 +1,4 @@
-import useCountdown from '../hooks/useCountdown';
+import useCountdown from '../hooks/useCountDown';
 
 export default function PricingCard({ variant }) {
   const timeLeft = useCountdown(variant.sale_end_time);

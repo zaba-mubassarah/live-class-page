@@ -16,9 +16,9 @@ export default function Navbar() {
           {/* Logo/Brand */}
           <div className="flex-shrink-0">
             <img 
-              src="/vite.svg" 
+              src="https://upload.wikimedia.org/wikipedia/commons/c/c3/10_Minute_School_Logo.svg"
               alt="Logo" 
-              className="h-8 w-8"
+              className="h-8 w-full"
             />
           </div>
 
