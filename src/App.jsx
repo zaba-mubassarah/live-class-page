@@ -4,7 +4,6 @@ import Hero from './components/Hero';
 import Features from './components/Features';
 import Instructors from './components/Instructors';
 import FAQ from './components/FAQ';
-import PricingCard from './components/PricingCard';
 import { CheckList } from './components/CheckList';
 import Routine from './components/Routine';
 import FreeItems from './components/FreeItems';
@@ -12,9 +11,9 @@ import Pointers from './components/Pointers';
 import DemoClass from './components/DemoClass';
 import Testimonials from './components/Testimonials';
 import About from './components/About';
-import LanguageSwitcher from './components/LanguageSwitcher';
 import MediaGallery from './components/MediaGallery';
 import Navbar from './components/Navbar';
+import Variants from './components/Variants';
 
 function App() {
     const [courseData, setCourseData] = useState(null);
@@ -39,7 +38,7 @@ function App() {
 
         fetchData();
     }, []);
-    
+
     if (loading) {
         return (
             <div className="min-h-screen flex items-center justify-center">
@@ -66,22 +65,12 @@ function App() {
                     title={courseData.title}
                     description={courseData.description}
                 />
-                
+
                 <div className="py-8 bg-gray-50">
                     <MediaGallery media={courseData.media} />
                 </div>
-
-                <div className="container mx-auto px-4 py-16">
-                    <h2 className="text-3xl font-bold text-center mb-12">Available Batches</h2>
-                    <div className="grid md:grid-cols-2 gap-8">
-                        {variantsData.items.map(variant => (
-                            <>
-                                <PricingCard key={variant.id} variant={variant} />
-                                <CheckList checklist={courseData.checklist} />
-                            </>
-                        ))}
-                    </div>
-                </div>
+                <Variants variants={variantsData.items} />
+                <CheckList checklist={courseData.checklist} />
                 <DemoClass demoClass={demoClass} />
                 <Instructors instructors={instructors} />
                 <Features features={features} />
