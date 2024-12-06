@@ -6,6 +6,11 @@ import Instructors from './components/Instructors';
 import FAQ from './components/FAQ';
 import PricingCard from './components/PricingCard';
 import { CheckList } from './components/CheckList';
+import Routine from './components/Routine';
+import FreeItems from './components/FreeItems';
+import Pointers from './components/Pointers';
+import DemoClass from './components/DemoClass';
+import Testimonials from './components/Testimonials';
 
 function App() {
     const [courseData, setCourseData] = useState(null);
@@ -30,7 +35,7 @@ function App() {
 
         fetchData();
     }, []);
-
+    
     if (loading) {
         return (
             <div className="min-h-screen flex items-center justify-center">
@@ -42,6 +47,11 @@ function App() {
     const features = courseData.sections.find(s => s.type === 'features')?.values || [];
     const instructors = courseData.sections.find(s => s.type === 'instructors')?.values || [];
     const faqs = courseData.sections.find(s => s.type === 'faq')?.values || [];
+    const routine = courseData.sections.find(s => s.type === 'routine');
+    const freeItems = courseData.sections.find(s => s.type === 'free_items');
+    const pointers = courseData.sections.find(s => s.type === 'pointers');
+    const demoClass = courseData.sections.find(s => s.type === 'demo_class_book_engagement');
+    const testimonials = courseData.sections.find(s => s.type === 'testimonials');
 
     return (
         <div>
@@ -62,10 +72,14 @@ function App() {
                     ))}
                 </div>
             </div>
-
+            <DemoClass demoClass={demoClass} />
             <Features features={features} />
+            <Pointers pointers={pointers} />
             <Instructors instructors={instructors} />
+            <Testimonials testimonials={testimonials} />
             <FAQ faqs={faqs} />
+            <Routine routine={routine} />
+            <FreeItems freeItems={freeItems} />
         </div>
     );
 }
