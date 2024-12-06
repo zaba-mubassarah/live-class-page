@@ -12,6 +12,7 @@ import Pointers from './components/Pointers';
 import DemoClass from './components/DemoClass';
 import Testimonials from './components/Testimonials';
 import About from './components/About';
+import MediaGallery from './components/MediaGallery';
 
 function App() {
     const [courseData, setCourseData] = useState(null);
@@ -60,8 +61,11 @@ function App() {
             <Hero
                 title={courseData.title}
                 description={courseData.description}
-                media={courseData.media}
             />
+            
+            <div className="py-8 bg-gray-50">
+                <MediaGallery media={courseData.media} />
+            </div>
 
             <div className="container mx-auto px-4 py-16">
                 <h2 className="text-3xl font-bold text-center mb-12">Available Batches</h2>
@@ -75,14 +79,14 @@ function App() {
                 </div>
             </div>
             <DemoClass demoClass={demoClass} />
-            <Features features={features} />
-            <Pointers pointers={pointers} />
             <Instructors instructors={instructors} />
+            <Features features={features} />
+            <Routine routine={routine} />
+            <About about={about} />
+            <Pointers pointers={pointers} />
             <Testimonials testimonials={testimonials} />
             <FAQ faqs={faqs} />
-            <Routine routine={routine} />
             <FreeItems freeItems={freeItems} />
-            <About about={about} />
         </div>
     );
 }

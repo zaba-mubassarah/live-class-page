@@ -1,8 +1,6 @@
 import { Play } from 'lucide-react';
 
 export default function Hero({ title, description, media }) {
-  const previewVideo = media.find(m => m.name === 'preview_gallery' && m.resource_type === 'video');
-  const thumbnail = media.find(m => m.name === 'thumbnail')?.resource_value;
 
   return (
     <div className="relative bg-gray-900 text-white">
@@ -18,19 +16,6 @@ export default function Hero({ title, description, media }) {
               Enroll Now
             </button>
           </div>
-          
-          {previewVideo && (
-            <div className="relative rounded-lg overflow-hidden">
-              <img 
-                src={thumbnail} 
-                alt="Course Preview"
-                className="w-full h-auto"
-              />
-              <button className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-40 hover:bg-opacity-50 transition-opacity">
-                <Play size={64} className="text-white" />
-              </button>
-            </div>
-          )}
         </div>
       </div>
     </div>
