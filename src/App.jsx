@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import useCourseData from './hooks/useCourseData';
-import useIntersectionObserver from './hooks/useIntersectionObserver';
 import Hero from './components/Hero';
 import Features from './components/Features';
 import Instructors from './components/Instructors';
