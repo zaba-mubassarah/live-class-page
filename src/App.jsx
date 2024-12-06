@@ -14,12 +14,16 @@ import About from './components/About';
 import MediaGallery from './components/MediaGallery';
 import Navbar from './components/Navbar';
 import Variants from './components/Variants';
+import { motion } from 'framer-motion'; // Import motion from 'framer-motion'
 
 function App() {
     const [courseData, setCourseData] = useState(null);
     const [variantsData, setVariantsData] = useState(null);
     const [loading, setLoading] = useState(true);
     const [selectedBatchIndex, setSelectedBatchIndex] = useState(0);
+    const [instructorDivVisible, setInstructorDivVisible] = useState(false); // State to track instructor div visibility
+    const [showVariants, setShowVariants] = useState(false); // State to track variants visibility based on scroll
+    console.log(instructorDivVisible)
 
     useEffect(() => {
         const fetchData = async () => {
@@ -39,6 +43,44 @@ function App() {
         };
 
         fetchData();
+    }, []);
+
+    useEffect(() => {
+        const observer = new IntersectionObserver((entries) => {
+            if (entries[0].isIntersecting) {
+                setInstructorDivVisible(true);
+                console.log('Instructor div is now visible');
+            } else {
+                setInstructorDivVisible(false);
+            }
+        });
+
+        const target = document.getElementById('instructorsDiv');
+        if (target) {
+            observer.observe(target);
+        }
+
+        return () => {
+            if (target) {
+                observer.unobserve(target);
+            }
+        };
+    }, []);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            if (window.scrollY >= 600) {
+                setShowVariants(true);
+            } else {
+                setShowVariants(false);
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll);
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
     }, []);
 
     if (loading) {
@@ -75,10 +117,10 @@ function App() {
                             targetDate={targetDate} // Pass targetDate to Hero
                         />
                     </div>
-                    <div className="p-4 rounded-lg border max-w-xl absolute right-4 top-4 bg-gray-100">
+                    <div className="p-4 rounded-lg border max-w-xl md:absolute right-4 top-4 bg-gray-100">
                         <MediaGallery media={courseData.media} />
-                        <Variants 
-                            variants={variantsData.items} 
+                        <Variants
+                            variants={variantsData.items}
                             checklist={courseData.checklist}
                             currentIndex={selectedBatchIndex} // Pass current index
                             setCurrentIndex={setSelectedBatchIndex} // Pass updater
@@ -90,8 +132,26 @@ function App() {
                         </div>
                     </div>
                 </div>
-                <div className='max-w-3xl'>
-                    <Instructors instructors={instructors} />
+                <div className='max-w-3xl relative pr-4'>
+                    {
+                        showVariants && window.innerWidth > 768  &&
+                        <motion.div 
+                            className=" md:fixed md:right-4 md:p-4 md:bg-gray-100 md:rounded-t-lg md:top-20"
+                            initial={{ x: '100%' }}
+                            animate={{ x: '0' }}
+                            transition={{ duration: 0.5 }}
+                        >
+                            <Variants
+                                variants={variantsData.items}
+                                checklist={courseData.checklist}
+                                currentIndex={selectedBatchIndex} 
+                                setCurrentIndex={setSelectedBatchIndex}
+                            />
+                        </motion.div>
+                    }
+                    <div id="instructorsDiv"> {/* Parent div with id */}
+                        <Instructors instructors={instructors} />
+                    </div>
                     <Features features={features} />
                     <Routine routine={routine} />
                     <About about={about} />
