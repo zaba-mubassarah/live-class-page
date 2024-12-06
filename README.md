@@ -36,6 +36,20 @@ A modern, responsive course landing page built with React, Vite, and Tailwind CS
 ### Installation
 
 1. Clone the repository:
+2. Navigate to the project directory:
+   ```bash
+   cd live-class-page
+   ```
+3. Install the dependencies:
+   ```bash
+   npm install
+   ```
 
+4. Start the development server:
+   ```bash
+   npm run dev
+   ```
 
+5. Open your browser and navigate to [http://localhost:3000](http://localhost:3000) to view the live site.
 
+6. To view the code, visit the [GitHub repository](https://github.com/zaba-mubassarah/live-class-page). For a live preview, go to [https://live-class-page-3fgw.vercel.app/](https://live-class-page-3fgw.vercel.app/).
